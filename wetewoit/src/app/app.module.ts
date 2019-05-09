@@ -6,16 +6,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule} from '@angular/router';
 import { AboutComponent } from './about/about.component';
-import { ToursComponent } from './tours/tours.component';
-import { PerformanceComponent } from './performance/performance.component'
+import { PerformanceComponent } from './performance/performance.component';
+import { AddPerformaceComponent } from './add-performace/add-performace.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    ToursComponent,
     PerformanceComponent,
+    AddPerformaceComponent,
   ],
   imports: [
     HttpClientModule,
@@ -30,7 +30,11 @@ import { PerformanceComponent } from './performance/performance.component'
          component:AboutComponent
       },
       {
-        path:'performances',
+        path:'performances/add',
+        component:AddPerformaceComponent
+      },
+      {
+        path:'performances/show',
         component:PerformanceComponent
       }
     ]
