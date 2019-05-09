@@ -1,4 +1,7 @@
 <app-home></app-home>
-<p>
-  tours works!
-</p>
+<ul class="list-unsttyled">
+ <li *ngFor="let tour of completedTours;index as i" >
+<a routerLink="/{{tour}}" >{{i+1}} {{tour}}</a>
+  </li>
+</ul>
+<p>Selected Tour is: {{selectedTour}}</p>
