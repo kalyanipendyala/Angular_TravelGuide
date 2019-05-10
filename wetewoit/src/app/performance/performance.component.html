@@ -1,13 +1,11 @@
 <app-home></app-home>
-
-<button value="test" (click)="getData()" > clickme</button>
 <ul>
-  <li *ngFor="let item of listofUrls">
-     {{item}} 
+  <li *ngFor="let item of local">
+  {{item.date}} 
+      <video  width="320" height="240" controls>
+          <source src = {{item.key}} type="video/mp4"/>
+           Your browser does not support the video tag.
+         </video>
     </li>
 </ul>
 
-<!-- <video  width="320" height="240" controls>
- <source src ="https://raw.githubusercontent.com/kalyanipendyala/AngularDemo/master/src/assets/Clip_480_5sec_6mbps_h264.mp4" type="video/mp4"/>
-  Your browser does not support the video tag.
-</video> -->

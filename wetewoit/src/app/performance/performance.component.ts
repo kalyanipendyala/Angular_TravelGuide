@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-performance',
@@ -9,24 +11,33 @@ import { map } from 'rxjs/operators';
 })
 export class PerformanceComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-   listofUrls:String[];
-   
+  listofUrls: String[];
+  local: any;
 
-  getData(){
+  getData() {
     this.listofUrls = ['ab'];
     console.log("inside getData");
     var dataurl = './assets/data/api/url_list.json';
     return this.http.get(dataurl)
-          .subscribe(result => {
-          var d = JSON.stringify(result);
-          console.log(JSON.parse(d).key);
-           this.listofUrls.push(JSON.parse(d).key);
-          });
+      .subscribe(result => {
+        var d = JSON.stringify(result);
+        this.local = JSON.parse(d).values;
+        JSON.parse(d).values.forEach(element => {
+          this.listofUrls.push(element.key);
+        });
+      });
   }
 
   ngOnInit() {
+    console.log("init");
+    this.getData();
   }
 
+}
+
+export interface showDetails{
+  date:String;
+  path:String;
 }
